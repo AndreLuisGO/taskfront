@@ -1,6 +1,3 @@
-# taskfront
-
-
 # TaskFront
 
 Uma **Frontend para uma Rest api **, para manter controle das suas tarefas diárias.
