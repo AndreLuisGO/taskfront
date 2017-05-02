@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TaskSys</title>
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css'>
+    <!-- Bootstrap CDN -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">TaskSys : : Controle de Tarefas</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="https://github.com/AndreLuisGO/" class="item navbar-right  fa fa-github"> Github </a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container" id="contain_tabela">
+    <div class="row">
+    <div class="">
+      <h1 class="text-center">Lista de Tarefas</h1>
+      <ul class="list-group">
+        <li class="list-group-item">
+            <div class="container">
+              <table id="tarefas" class="table table-hover">
+                <thead class="thead">
+                  <tr>
+                    <th> # &nbsp</th>
+                    <th> Tarefa &nbsp</th>
+                    <th> Concluída &nbsp</th>
+                    <th> Editar &nbsp</th>
+                    <th> Excluir &nbsp</th>
+                  </tr>
+                </thead>
+                <tbody class="table-hover">
+                    <template id="template-tarefa">
+                    <tr data-id='{{id}}'>
+                      <td>{{id}}</td>
+                      <td><input type="text" class="noedit concluispan nome" id="conclui {{id}}" value="{{nome}}" disabled></td>
+                          <td>{{^concluida}}
+                          <input type="checkbox" class="conc_edit" id="conclui{{id}}"/>
+                            {{/concluida}}
+                            {{#concluida}}
+                          <input type="checkbox" class="conc_edit" id="conclui{{id}}" checked="checked"/>
+                            {{/concluida}}
+                       </td>
+                      <td><button class="edita-tarefa noedit  btn btn-warning glyphicon glyphicon-edit" data-id={{id}}></button></td>
+                      <td><button class="remove-tarefa btn btn-danger glyphicon glyphicon-remove" data-id={{id}}></button></td>
+                    </tr>
+                  </template>
+                </tbody>
+              </table>
+            </div>
+          <div class="clearfix"></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <template id="templateEdit">
+        <tr data-id='{{id}}'>
+          <td>{{id}}</td>
+          <td><input type="text" class="editnome form-control" value="{{nome}}"/></td>
+          <td>{{^concluida}}
+            <input type="checkbox" class="custom-control-input edit concluida" id="conclui"/>
+              {{/concluida}}
+              {{#concluida}}
+            <input type="checkbox" class="custom-control-input edit concluida" id="conclui" checked="checked"/>
+              {{/concluida}}
+          </td>
+          <td><button class="edit  btn btn-warning" id="cancelaedit" data-id={{id}} onclick="window.location.reload()"> Cancelar </button></td>
+          <td><button class="salvaedit edit  btn btn-success glyphicon glyphicon-floppy-disk" data-id='{{id}}' tooltip="Salvar">Salvar</button></td>
+        </tr>
+    </template>
+    <h2 class="text-center">Nova Tarefa:</h2>
+      <div class="form-group">
+        <label>Nome da tarefa: </label>
+        <input type="text" id="nome" class="form-control">
+      <label class="custom-control custom-checkbox">
+      <p><input type="checkbox" id="check" class="custom-control-input">Concluída</p>
+      <button class="btn btn-primary" id="add-tarefa"> Adicionar </button>
+      </label>
+    </div>
+  </div>
+
+</div>
+
+</div>
+    <!-- /.container -->
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <!-- Bootstrap CDN -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Ajax JS -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
+    <script src="/js/main.js"></script>       
+    </body>
+</html>
