@@ -29,8 +29,8 @@
       </div>
     </nav>
 
-    <div class="container" id="contain_tabela">
-    <div class="row">
+    <div class="container" >
+    <div class="row" id="contain_tabela">
     <div class="">
       <h1 class="text-center">Lista de Tarefas</h1>
       <ul class="list-group">
@@ -84,14 +84,14 @@
             <input type="checkbox" class="custom-control-input edit concluida" id="conclui" checked="checked"/>
               {{/concluida}}
           </td>
-          <td><button class="edit  btn btn-warning" id="cancelaedit" data-id={{id}} onclick="window.location.reload()"> Cancelar </button></td>
+          <td><button class="edit  btn btn-warning" id="cancelaedit" data-id={{id}} onclick="window.location.reload()">Cancelar</button></td>
           <td><button class="salvaedit edit  btn btn-success glyphicon glyphicon-floppy-disk" data-id='{{id}}' tooltip="Salvar">Salvar</button></td>
         </tr>
     </template>
     <h2 class="text-center">Nova Tarefa:</h2>
       <div class="form-group">
         <label>Nome da tarefa: </label>
-        <input type="text" id="nome" class="form-control">
+        <input type="text" id="nome" class=" nomeinput form-control">
       <label class="custom-control custom-checkbox">
       <p><input type="checkbox" id="check" class="custom-control-input">Concluída</p>
       <button class="btn btn-primary" id="add-tarefa"> Adicionar </button>

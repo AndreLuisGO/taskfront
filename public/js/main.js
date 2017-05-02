@@ -25,6 +25,15 @@ $(document).ready(function(){
 		console.log(editconcluida);
 	});
 
+
+	function sortJSON(tarefas, key, ord) {
+    return tarefas.sort(function(a, b) {
+        var x = a[key]; var y = b[key];
+        if (ord === 'asc' ) { return ((x < y) ? -1 : ((x > y) ? 1 : 0)); }
+        if (ord === 'des') { return ((x > y) ? -1 : ((x < y) ? 1 : 0)); }
+    });
+}
+
 	function appendTarefa(tarefa){
 		$tarefas.append(Mustache.render(templateTarefa, tarefa));
 	}
@@ -38,6 +47,7 @@ $(document).ready(function(){
 		type:'GET',
 		url: 'http://127.0.0.1:8000/tarefas/?format=json',
 		success: function(tarefas) {
+			tarefas = sortJSON(tarefas,'id','asc')
 			$.each(tarefas, function(i, tarefa){
 				appendTarefa(tarefa);
 			});
@@ -59,6 +69,7 @@ $(document).ready(function(){
 			concluida: concluida,
 		},
 			success: function(novaTarefa){
+			    $('input.nomeinput').val('');
 				appendTarefa(novaTarefa);
 			},
 			error: function(){
@@ -89,8 +100,10 @@ $(document).ready(function(){
 			url: 'http://127.0.0.1:8000/tarefas/'+$tr.attr('data-id')+'/',
 			type: 'GET',
 			success: function(edTarefa){
+				$tr.fadeOut(500, function(){
 				editaTarefa(edTarefa);
 				console.log('editatarefa funciona'+ $tr.attr('data-id')+'/');
+			});
 			},
 			error: function(){
 				alert('Erro ao editar tarefa!');
@@ -100,7 +113,7 @@ $(document).ready(function(){
 
 	$tarefas.delegate('.salvaedit', 'click', function(){
 		console.log('salvaedit funciona');		
-		var $tr = $(this).closest('tr');
+		var $trs = $(this).closest('tr');
 		var tarefa = {
 			nome: $('input.editnome').val(),
 			concluida: $('input#conclui').is(":checked"),
@@ -112,8 +125,10 @@ $(document).ready(function(){
 			type: 'PUT',
 			data: tarefa,
 			success: function(novaTarefa){
+				$trs.fadeOut(500, function(){
+				$("#contain_tabela").load(location.href + "#contain_tabela");
 				appendTarefa(novaTarefa);
-				window.location.reload(true); 
+				}); 
 			},
 			error: function(){
 				alert('Erro ao atualizar tarefa!');
@@ -140,7 +155,7 @@ $(document).ready(function(){
 			data: tarefa,
 			success: function(novaTarefa){
 				appendTarefa(novaTarefa);
-				window.location.reload(true);
+				$("#contain_tabela").load(location.href + "#contain_tabela");
 			},
 			error: function(){
 				alert('Erro ao atualizar tarefa!');
@@ -148,10 +163,4 @@ $(document).ready(function(){
 		});
 
 	 })
-
-
-
-	$('#cancelaedit').onclick= function(){
-		window.location.reload(true);
-	}
 });
