@@ -2,7 +2,7 @@
 
 Uma Frontend, para manter controle das suas tarefas diárias. Deve consumir os serviços de uma Rest API*.
 
-//Direcionada para o projeto [TaskSys] (https://github.com/AndreLuisGO/tasksys/)
+//Direcionada para o projeto [TaskSys](https://github.com/AndreLuisGO/tasksys/)
 
 
 ## Instruções
