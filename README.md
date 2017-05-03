@@ -31,7 +31,7 @@ Para manter as configurações apenas neste projeto, utilize o [*virtualenv*](ht
 ```
 $ git clone https://github.com/AndreLuisGO/tasksys.git
 ```
-1. Após feito, navegue até a pasta com
+2. Após feito, navegue até a pasta com
 ```
 $ cd tasksys
 ```
@@ -41,20 +41,20 @@ $ cd tasksys
 
 
 
-1. Instale o http-server usando:
+3. Instale o http-server usando:
 ```
 $ npm install http-server
 ```
 Isso irá instalar o http-server
 
 
-1. Agora, basta iniciar o servidor
+4. Agora, basta iniciar o servidor
 
 ```
 http-server
 ```
 
-1. Se tudo der certo, você irá ver a seguinte mensagem:
+5. Se tudo der certo, você irá ver a seguinte mensagem:
 
 ```
 Starting up http-server, serving ./
@@ -66,14 +66,14 @@ Hit CTRL-C to stop the server
 
 
 
-1. Feito isso, abra seu navegador e acesse:
+6. Feito isso, abra seu navegador e acesse:
 
 `http://127.0.0.1:8080`
 
 O Frontend será carregado, e, caso a API esteja rodando (veja instruções do projeto [Tasksys](https://github.com/AndreLuisGO/tasksys) para instalar e rodar a API), as tarefas já poderão ser adicionadas.
 
 
-1. Aproveite o momento e utilize a interface para sua rotina.
+7. Aproveite o momento e utilize a interface para sua rotina.
 
 ## Construído com
 
